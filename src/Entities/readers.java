@@ -14,16 +14,17 @@ import java.util.Scanner;
  * @author powpo
  */
 public class readers implements Serializable,interfaces{
-    private int madg;
+    private String madg;
     private String tendg;
     private String diachi;
     private int sdtdg;
     private String emaildg;
-    public int getMadg() {
+    private String gioitinh;
+    public String getMadg() {
         return madg;
     }
 
-    public void setMadg(int madg) {
+    public void setMadg(String madg) {
         this.madg = madg;
     }
 
@@ -55,8 +56,16 @@ public class readers implements Serializable,interfaces{
         return emaildg;
     }
 
-    public void setEmaildg(String emaildg) {
+    public void setEmaildg(String gioitinh) {
         this.emaildg = emaildg;
+    }
+    
+    public String getGioiTinh() {
+        return gioitinh;
+    }
+
+    public void setGioiTinh(String gioitinh) {
+        this.gioitinh = gioitinh;
     }
 
     @Override

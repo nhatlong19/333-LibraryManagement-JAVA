@@ -26,7 +26,7 @@ public final class EngDepp extends javax.swing.JFrame {
         hienthisach();
         model=(DefaultTableModel) banghienthisach.getModel();
     }
-public void hienthisach() {
+    public void hienthisach() {
         for (interfaces g : listsach) {
             book s = (book) g;
             model.addRow(new Object[]{
