@@ -292,6 +292,13 @@ public class DataEntry extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
+        int hang = banghienthiuser.getSelectedRow();
+        if (hang != -1) {
+            model.removeRow(hang);//xóa thông tin trong hàng đã chọn
+            listuser.remove(hang);//xóa thông tin trong list
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Bạn cần chọn dòng muốn xóa!");
+        }
     }//GEN-LAST:event_deleteActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed

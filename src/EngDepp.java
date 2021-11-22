@@ -120,6 +120,11 @@ public final class EngDepp extends javax.swing.JFrame {
         });
 
         jButton4.setText("Xóa");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("GOBACK");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -248,6 +253,17 @@ public final class EngDepp extends javax.swing.JFrame {
             model.setValueAt(s.getTinhtrang(), hang, 2);              
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int hang = banghienthisach.getSelectedRow();
+        if (hang != -1) {
+            model.removeRow(hang);//xóa thông tin trong hàng đã chọn
+            listsach.remove(hang);//xóa thông tin trong list
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Bạn cần chọn dòng muốn xóa!");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
