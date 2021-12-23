@@ -2,6 +2,7 @@
 import java.text.SimpleDateFormat;
 import java.sql.*;
 import a.az;
+import Project.ConnectionProvider;
 import javax.swing.JOptionPane;
 
 /*
@@ -67,6 +68,11 @@ public class issueBook extends javax.swing.JFrame {
         });
 
         jButton2.setText("Đóng");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,7 +147,8 @@ public class issueBook extends javax.swing.JFrame {
         String dueDate=dFormat.format(txtDueDate.getDate());
         String returnBook="No";
         try {
-            Connection con=az.getCon();
+            //Connection con=az.getCon();
+            Connection con=ConnectionProvider.getCon();
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery("select *from book where bookID='"+bookID+"'");
             if(rs.next())
@@ -163,6 +170,13 @@ public class issueBook extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        MenuPage obj=new MenuPage();
+        obj.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
