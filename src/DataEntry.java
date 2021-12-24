@@ -324,7 +324,26 @@ public class DataEntry extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-
+        int row = banghienthiuser.getSelectedRow();
+        String id = banghienthiuser.getModel().getValueAt(row,0).toString();
+        try
+        {
+            //Connection con=ConnectionProvider.getCon();
+            //Connection con=az.getCon();
+            Connection con=KN.getCon();
+            Statement st=con.createStatement();
+            String query = "DELETE FROM reader WHERE reader.readerID ='"+ id +"'";
+            st.executeUpdate(query);
+            JOptionPane.showMessageDialog(null,"Deleted");
+            setVisible(false);
+            new DataEntry().setVisible(true);
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"error");
+            setVisible(false);
+            new DataEntry().setVisible(true);
+        }
     }//GEN-LAST:event_deleteActionPerformed
 
     /**
