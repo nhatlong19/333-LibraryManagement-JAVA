@@ -1,6 +1,7 @@
 import Project.ConnectionProvider;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import conect.KN;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -165,7 +166,8 @@ public class mDataEntry extends javax.swing.JFrame {
         // TODO add your handling code here:
         String readerID=jTextField1.getText();
         try {
-            Connection con=ConnectionProvider.getCon();
+            //Connection con=ConnectionProvider.getCon();
+            Connection con=KN.getCon();
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery("select *from reader where readerID='"+readerID+"'");
             if(rs.next()){
@@ -186,7 +188,8 @@ public class mDataEntry extends javax.swing.JFrame {
         String adress=jTextField3.getText();
         String gender=jTextField4.getText();
         try {
-            Connection con=ConnectionProvider.getCon();
+            //Connection con=ConnectionProvider.getCon();
+            Connection con=KN.getCon();
             Statement st=con.createStatement();
             st.executeUpdate("update reader set name ='"+name+"',adress='"+adress+"',gender='"+gender+"'where readerID='"+readerID+"'");
             JOptionPane.showMessageDialog(null, "Update thành công");
