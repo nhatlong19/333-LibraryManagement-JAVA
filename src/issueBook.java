@@ -4,6 +4,7 @@ import java.sql.*;
 import a.az;
 import Project.ConnectionProvider;
 import javax.swing.JOptionPane;
+import conect.KN;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -148,7 +149,8 @@ public class issueBook extends javax.swing.JFrame {
         String returnBook="No";
         try {
             //Connection con=az.getCon();
-            Connection con=ConnectionProvider.getCon();
+            //Connection con=ConnectionProvider.getCon();
+            Connection con=KN.getCon();
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery("select *from book where bookID='"+bookID+"'");
             if(rs.next())

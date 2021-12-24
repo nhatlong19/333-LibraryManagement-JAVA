@@ -4,6 +4,7 @@ import javax.swing.table.DefaultTableModel;
 import Project.ConnectionProvider;
 import net.proteanit.sql.DbUtils;
 import a.az;
+import conect.KN;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -245,8 +246,9 @@ public class DataEntry extends javax.swing.JFrame {
         // TODO add your handling code here:
         try
         {
-            Connection con=ConnectionProvider.getCon();
+            //Connection con=ConnectionProvider.getCon();
             //Connection con=az.getCon();
+            Connection con=KN.getCon();
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery("select reader.readerID,reader.name,reader.adress,reader.gender from reader");
             banghienthiuser.setModel(DbUtils.resultSetToTableModel(rs));
@@ -285,8 +287,9 @@ public class DataEntry extends javax.swing.JFrame {
         String gender=(String)jComboBox1.getSelectedItem();
         try
         {
-            Connection con=ConnectionProvider.getCon();
+            //Connection con=ConnectionProvider.getCon();
             //Connection con=az.getCon();
+            Connection con=KN.getCon();
             Statement st=con.createStatement();
             st.executeUpdate("insert into reader values('"+readerID+"','"+name+"','"+adress+"','"+gender+"')");
             JOptionPane.showMessageDialog(null,"Successfully");
@@ -321,7 +324,26 @@ public class DataEntry extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-
+        int row = banghienthiuser.getSelectedRow();
+        String id = banghienthiuser.getModel().getValueAt(row,0).toString();
+        try
+        {
+            //Connection con=ConnectionProvider.getCon();
+            //Connection con=az.getCon();
+            Connection con=KN.getCon();
+            Statement st=con.createStatement();
+            String query = "DELETE FROM reader WHERE reader.readerID ='"+ id +"'";
+            st.executeUpdate(query);
+            JOptionPane.showMessageDialog(null,"Deleted");
+            setVisible(false);
+            new DataEntry().setVisible(true);
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"error");
+            setVisible(false);
+            new DataEntry().setVisible(true);
+        }
     }//GEN-LAST:event_deleteActionPerformed
 
     /**

@@ -5,6 +5,7 @@
 import a.az;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import conect.KN;
 /**
  *
  * @author powpo
@@ -132,7 +133,8 @@ public class mBook extends javax.swing.JFrame {
         String nxb=txtNXB.getText();
         String tacgia=txtTacGia.getText();
         try {
-            Connection con=az.getCon();
+            //Connection con=az.getCon();
+            Connection con=KN.getCon();
             Statement st=con.createStatement();
             st.executeUpdate("update book set name ='"+name+"',nxb='"+nxb+"',tacgia='"+tacgia+"'where bookID='"+bookID+"'");
             JOptionPane.showMessageDialog(null, "Update thành công");
@@ -148,7 +150,8 @@ public class mBook extends javax.swing.JFrame {
         // TODO add your handling code here:
         String bookID=txtBookID.getText();
         try {
-            Connection con=az.getCon();
+            //Connection con=az.getCon();
+            Connection con=KN.getCon();
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery("select *from book where bookID='"+bookID+"'");
             if(rs.next()){
